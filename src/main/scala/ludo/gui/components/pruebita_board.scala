@@ -10,7 +10,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Polygon
 
 class BoardView(
-  board: BoardInterface,
+  board: InterfazTablero,
   onPieceClick: Int => Unit
 ) extends GridPane:
 
@@ -31,43 +31,43 @@ class BoardView(
 
   private val baseRed =
     new BaseZone(
-      PlayerColor.Red,
-      piecesOf(PlayerColor.Red, board),
+      JugadorColor.Red,
+      piecesOf(JugadorColor.Red, board),
       onPieceClick
     )
 
   private val baseBlue =
     new BaseZone(
-      PlayerColor.Blue,
-      piecesOf(PlayerColor.Blue, board),
+      JugadorColor.Blue,
+      piecesOf(JugadorColor.Blue, board),
       onPieceClick
     )
 
   private val baseGreen =
     new BaseZone(
-      PlayerColor.Green,
-      piecesOf(PlayerColor.Green, board),
+      JugadorColor.Green,
+      piecesOf(JugadorColor.Green, board),
       onPieceClick
     )
 
   private val baseYellow =
     new BaseZone(
-      PlayerColor.Yellow,
-      piecesOf(PlayerColor.Yellow, board),
+      JugadorColor.Yellow,
+      piecesOf(JugadorColor.Yellow, board),
       onPieceClick
     )
 
   // ── Centro ──────────────────────────────────────────────────────
 
-  private val centerPane = buildCenter()
+  private val areaCasas = dibujarCasas()
 
   // ── Referencias visuales de casillas ────────────────────────────
 
-  private var trackCells: Map[Int, Node] = Map.empty
+  private var CasillaPista: Map[Int, Node] = Map.empty
 
   // ── Track visual del tablero ────────────────────────────────────
 
-  val trackPositions: Vector[(Int, Int)] = (
+  val trackposicions: Vector[(Int, Int)] = (
 
     (0 to 5).map(c => (c, 6)) ++
 
@@ -97,14 +97,14 @@ class BoardView(
 
   // ── Construcción inicial ────────────────────────────────────────
 
-  buildLayout(board)
+  dibujarTablero(board)
 
   // ── Layout principal ────────────────────────────────────────────
 
-  private def buildLayout(currentBoard: BoardInterface): Unit =
+  private def dibujarTablero(currentBoard: InterfazTablero): Unit =
 
     children.clear()
-    trackCells = Map.empty
+    CasillaPista = Map.empty
 
     // Bases
     placeAt(baseRed, 0, 0, 6, 6)
@@ -114,47 +114,47 @@ class BoardView(
     placeAt(baseYellow, 9, 9, 6, 6)
 
     // Centro
-    placeAt(centerPane, 6, 6, 3, 3)
+    placeAt(areaCasas, 6, 6, 3, 3)
 
     // Casillas del track
     currentBoard.cells.zipWithIndex.foreach { case (cell, idx) =>
 
-      if idx < trackPositions.length then
+      if idx < trackposicions.length then
 
-        val (col, row) = trackPositions(idx)
+        val (col, row) = trackposicions(idx)
 
         val cellNode = CellView(cell, onPieceClick)
 
-        trackCells += (idx -> cellNode.delegate)
+        CasillaPista += (idx -> cellNode.delegate)
 
         placeAt(cellNode.delegate, col, row)
     }
 
   // ── Actualización visual ────────────────────────────────────────
 
-  def updateBoard(newBoard: BoardInterface): Unit =
+  def updateBoard(nuevoTablero: InterfazTablero): Unit =
 
     baseRed.update(
-      piecesOf(PlayerColor.Red, newBoard)
+      piecesOf(JugadorColor.Red, nuevoTablero)
     )
 
     baseBlue.update(
-      piecesOf(PlayerColor.Blue, newBoard)
+      piecesOf(JugadorColor.Blue, nuevoTablero)
     )
 
     baseGreen.update(
-      piecesOf(PlayerColor.Green, newBoard)
+      piecesOf(JugadorColor.Green, nuevoTablero)
     )
 
     baseYellow.update(
-      piecesOf(PlayerColor.Yellow, newBoard)
+      piecesOf(JugadorColor.Yellow, nuevoTablero)
     )
 
-    buildLayout(newBoard)
+    dibujarTablero(nuevoTablero)
 
   // ── Centro del tablero ──────────────────────────────────────────
 
-  private def buildCenter(): Node =
+  private def dibujarCasas(): Node =
 
     val size = CellView.SIZE * 2
     val half = size / 2
@@ -199,9 +199,9 @@ class BoardView(
   // ── Helpers ─────────────────────────────────────────────────────
 
   private def piecesOf(
-    color: PlayerColor,
-    b: BoardInterface
-  ): Vector[PieceInterface] =
+    color: JugadorColor,
+    b: InterfazTablero
+  ): Vector[InterfazPieza] =
     b.cells
       .flatMap(_.piece)
       .filter(_.color == color)

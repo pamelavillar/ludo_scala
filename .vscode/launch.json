@@ -16,8 +16,8 @@
     {
       "type": "scala",
       "request": "launch",
-      "name": "DebugTrackPositions",
-      "mainClass": "DebugTrackPositions",
+      "name": "DebugTrackposicions",
+      "mainClass": "DebugTrackposicions",
       "buildTarget": "file:/Users/pamelavillar/Downloads/ludo-gui%202/?id=ludo-gui-2",
       "args": [],
       "jvmOptions": [],

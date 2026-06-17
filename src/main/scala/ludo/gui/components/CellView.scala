@@ -14,18 +14,18 @@ object CellView:
   val SIZE = 38.0
 
   // ─────────────────────────────────────────────────────────────
-  // Convierte PlayerColor → Color JavaFX
+  // Convierte JugadorColor → Color JavaFX
   // Ahora maneja null correctamente
   // ─────────────────────────────────────────────────────────────
-  def colorOf(pc: PlayerColor | Null): Color =
+  def colorOf(pc: JugadorColor | Null): Color =
     pc match
       case null               => Color.LightGray
-      case PlayerColor.Red    => Color.web("#E53935")
-      case PlayerColor.Blue   => Color.web("#1E88E5")
-      case PlayerColor.Green  => Color.web("#43A047")
-      case PlayerColor.Yellow => Color.web("#FDD835")
+      case JugadorColor.Red    => Color.web("#E53935")
+      case JugadorColor.Blue   => Color.web("#1E88E5")
+      case JugadorColor.Green  => Color.web("#43A047")
+      case JugadorColor.Yellow => Color.web("#FDD835")
 
-  def apply(cell: CellInterface, onPieceClick: Int => Unit): StackPane =
+  def apply(cell: InterfazCasilla, onPieceClick: Int => Unit): StackPane =
     new StackPane:
       minWidth = SIZE
       prefWidth = SIZE
@@ -51,12 +51,12 @@ object CellView:
 
   // ─────────────────────────────────────────────────────────────
 
-  private def buildStyle(cell: CellInterface): String =
+  private def buildStyle(cell: InterfazCasilla): String =
     val baseColor =
-      cell.isStartOf match
+      cell.esInicioPieza match
         case Some(color) => toHex(colorOf(color).darker)
         case None        => 
-          cell.isHomeOf match
+          cell.estaEnCasaOf match
             case Some(color) => toHex(colorOf(color))
             case None        => "#D0D0D0"
 
@@ -69,7 +69,7 @@ object CellView:
     """
 
   private def pieceOverlay(
-      cell: CellInterface,
+      cell: InterfazCasilla,
       onPieceClick: Int => Unit
   ): Seq[Node] =
 
@@ -91,7 +91,7 @@ object CellView:
           font = Font.font("monospace", FontWeight.Bold, 16)
 
           fill =
-            if piece.color == PlayerColor.Yellow then
+            if piece.color == JugadorColor.Yellow then
               Color.Black
             else
               Color.White

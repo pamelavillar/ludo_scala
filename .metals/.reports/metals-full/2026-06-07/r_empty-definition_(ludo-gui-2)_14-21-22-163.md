@@ -44,9 +44,9 @@ import scalafx.geometry.{Insets, Pos}
 // Cada equipo tiene su zona de base (2×2) y zona de llegada (4×1).
 //
 // NOTA: El layout exacto depende de la numeración que defina tu compañero
-// en BoardInterface. Ajusta los índices en `buildTrack()` cuando lo tengas.
+// en InterfazTablero. Ajusta los índices en `buildTrack()` cuando lo tengas.
 // ─────────────────────────────────────────────────────────────────────────────
-class BoardView(board: BoardInterface, onPieceClick: Int => Unit) extends GridPane:
+class BoardView(board: InterfazTablero, onPieceClick: Int => Unit) extends GridPane:
 
   hgap = 2
   vgap = 2
@@ -55,20 +55,20 @@ class BoardView(board: BoardInterface, onPieceClick: Int => Unit) extends GridPa
   alignment = Pos.Center
 
   // Zonas de base (4 esquinas del tablero)
-  private val baseRed    = new BaseZone(PlayerColor.Red,    piecesOf(PlayerColor.Red,    board), onPieceClick)
-  private val baseBlue   = new BaseZone(PlayerColor.Blue,   piecesOf(PlayerColor.Blue,   board), onPieceClick)
-  private val baseGreen  = new BaseZone(PlayerColor.Green,  piecesOf(PlayerColor.Green,  board), onPieceClick)
-  private val baseYellow = new BaseZone(PlayerColor.Yellow, piecesOf(PlayerColor.Yellow, board), onPieceClick)
+  private val baseRed    = new BaseZone(JugadorColor.Red,    piecesOf(JugadorColor.Red,    board), onPieceClick)
+  private val baseBlue   = new BaseZone(JugadorColor.Blue,   piecesOf(JugadorColor.Blue,   board), onPieceClick)
+  private val baseGreen  = new BaseZone(JugadorColor.Green,  piecesOf(JugadorColor.Green,  board), onPieceClick)
+  private val baseYellow = new BaseZone(JugadorColor.Yellow, piecesOf(JugadorColor.Yellow, board), onPieceClick)
 
   // Celdas del camino exterior (40 casillas, índices 0..39)
   // Ajusta estos índices según lo que defina tu compañero
-  private var trackCells: Map[Int, Node] = Map.empty
+  private var CasillaPista: Map[Int, Node] = Map.empty
 
-  buildLayout()
+  dibujarTablero()
 
   // ── Layout ────────────────────────────────────────────────────────
 
-  private def buildLayout(): Unit =
+  private def dibujarTablero(): Unit =
     children.clear()
 
     // Esquina superior izquierda → Base Roja (ocupa 6×6 celdas lógicas)
@@ -90,7 +90,7 @@ class BoardView(board: BoardInterface, onPieceClick: Int => Unit) extends GridPa
     // Mapeo de posición lógica (0..39) → (col, row) en el GridPane
     // Sentido horario empezando desde la salida de Rojo (pos=0, col=6, row=14)
     // TODO: ajustar coordenadas exactas cuando tengas la numeración de tu compañero
-    val trackPositions: Vector[(Int, Int)] = (
+    val trackposicions: Vector[(Int, Int)] = (
       // Columna izquierda bajando (fila 8..14, col 6) → pos 0..6
       (6 to 14).map(r => (6, r)) ++
       // Fila inferior izquierda → pos 7..13
@@ -101,7 +101,7 @@ class BoardView(board: BoardInterface, onPieceClick: Int => Unit) extends GridPa
 
     board.cells.zipWithIndex.foreach { (cell, idx) =>
       val cellNode = CellView(cell, onPieceClick)
-      trackCells = trackCells + (idx -> cellNode)
+      CasillaPista = CasillaPista + (idx -> cellNode)
       GridPane.setColumnIndex(cellNode, idx % 15)
       GridPane.setRowIndex(cellNode, 6 + idx / 15)
       children.add(cellNode)
@@ -109,23 +109,23 @@ class BoardView(board: BoardInterface, onPieceClick: Int => Unit) extends GridPa
 
   // ── Actualización del estado ──────────────────────────────────────
 
-  def updateBoard(newBoard: BoardInterface): Unit =
-    newBoard.cells.foreach { cell =>
-      trackCells.get(cell.position).foreach { node =>
+  def updateBoard(nuevoTablero: InterfazTablero): Unit =
+    nuevoTablero.cells.foreach { cell =>
+      CasillaPista.get(cell.posicion).foreach { node =>
         val newCell = CellView(cell, onPieceClick)
         val idx = children.indexOf(node)
         if idx >= 0 then children.set(idx, newCell)
-        trackCells = trackCells + (cell.position -> newCell)
+        CasillaPista = CasillaPista + (cell.posicion -> newCell)
       }
     }
-    baseRed.update(piecesOf(PlayerColor.Red, newBoard))
-    baseBlue.update(piecesOf(PlayerColor.Blue, newBoard))
-    baseGreen.update(piecesOf(PlayerColor.Green, newBoard))
-    baseYellow.update(piecesOf(PlayerColor.Yellow, newBoard))
+    baseRed.update(piecesOf(JugadorColor.Red, nuevoTablero))
+    baseBlue.update(piecesOf(JugadorColor.Blue, nuevoTablero))
+    baseGreen.update(piecesOf(JugadorColor.Green, nuevoTablero))
+    baseYellow.update(piecesOf(JugadorColor.Yellow, nuevoTablero))
 
   // ── Helpers ───────────────────────────────────────────────────────
 
-  private def piecesOf(color: PlayerColor, b: BoardInterface): Vector[PieceInterface] =
+  private def piecesOf(color: JugadorColor, b: InterfazTablero): Vector[InterfazPieza] =
     b.cells.flatMap(_.piece).filter(_.color == color)
 
   private def placeAt(

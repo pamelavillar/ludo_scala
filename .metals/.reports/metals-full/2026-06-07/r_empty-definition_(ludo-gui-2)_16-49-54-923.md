@@ -28,9 +28,9 @@ import scalafx.application.Platform
 // LudoApp — punto de entrada de la GUI
 //
 // Para conectar la lógica real de tu compañero, solo cambia esta línea:
-//   val controller: ControllerInterface = new MockController()
+//   val controller: InterfazControlador = new MockController()
 // por:
-//   val controller: ControllerInterface = new Controller()   // la impl real
+//   val controller: InterfazControlador = new Controller()   // la impl real
 //
 // Nada más cambia.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -39,10 +39,10 @@ object LudoApp extends JFXApp3:
   override def start(): Unit =
 
     // ── 1. Controller (cambia MockController por el real cuando esté listo) ──
-    val controller: ControllerInterface = new MockCo@@ntroller()
+    val controller: InterfazControlador = new MockCo@@ntroller()
 
     // ── 2. Componentes ───────────────────────────────────────────────────────
-    val boardView    = new BoardView(controller.board, pieceId => controller.movePiece(pieceId))
+    val boardView    = new BoardView(controller.board, pieceId => controller.moverPieza(pieceId))
     val controlPanel = new ControlPanel(controller)
 
     // ── 3. Suscripción a eventos ─────────────────────────────────────────────
@@ -53,26 +53,26 @@ object LudoApp extends JFXApp3:
       // Platform.runLater garantiza que los cambios de UI ocurran en el hilo de JavaFX.
       Platform.runLater {
         event match
-          case GameStarted(board) =>
+          case inicioJuego(board) =>
             boardView.updateBoard(board)
 
-          case DiceRolled(value) =>
-            controlPanel.showDice(value)
-            controlPanel.setRollEnabled(false)   // espera que el jugador mueva
+          case LanzarDado(value) =>
+            controlPanel.mostrar_dado(value)
+            controlPanel.dadoHabilitado(false)   // espera que el jugador mueva
 
-          case PieceMoved(_, newBoard) =>
-            boardView.updateBoard(newBoard)
-            controlPanel.setRollEnabled(true)    // nuevo turno, puede volver a tirar
+          case MoverPieza(_, nuevoTablero) =>
+            boardView.updateBoard(nuevoTablero)
+            controlPanel.dadoHabilitado(true)    // nuevo turno, puede volver a tirar
 
-          case TurnChanged(player) =>
-            controlPanel.updateTurn(player)
+          case CambioTurno(jugador) =>
+            controlPanel.updateTurn(jugador)
 
-          case MessageUpdated(text) =>
+          case ActualizarMensajes(text) =>
             controlPanel.showMessage(text)
 
-          case GameOver(winner) =>
+          case gameOver(winner) =>
             controlPanel.showMessage(s"🏆 ¡${winner.name} ganó la partida!")
-            controlPanel.setRollEnabled(false)
+            controlPanel.dadoHabilitado(false)
       }
     }
 
@@ -94,17 +94,17 @@ object LudoApp extends JFXApp3:
         stylesheets.add(getClass.getResource("/style.css").toExternalForm)
 
     // ── 7. Arranca el juego (2 jugadores por defecto) ─────────────────────────
-    controller.startGame(2)
+    controller.comenzarJuego(2)
 
   // ── Menú de partida ───────────────────────────────────────────────────────
-  private def buildMenuBar(controller: ControllerInterface): MenuBar =
+  private def buildMenuBar(controller: InterfazControlador): MenuBar =
     val gameMenu = new Menu("Partida"):
       items = Seq(
         new MenuItem("Nueva partida (2 jugadores)"):
-          onAction = _ => controller.startGame(2)
+          onAction = _ => controller.comenzarJuego(2)
         ,
         new MenuItem("Nueva partida (4 jugadores)"):
-          onAction = _ => controller.startGame(4)
+          onAction = _ => controller.comenzarJuego(4)
       )
     new MenuBar:
       menus = Seq(gameMenu)

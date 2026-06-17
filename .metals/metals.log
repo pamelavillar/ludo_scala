@@ -2234,3 +2234,212 @@ INFO: Unsupported notification method: $/setTrace
 2026.06.17 10:03:41 INFO  time: Connected to build server in 0.23s
 2026.06.17 10:03:41 INFO  Connected to Build server: Bloop v2.0.19
 2026.06.17 10:03:43 INFO  time: indexed workspace in 1.11s
+2026.06.17 10:11:16 INFO  compiling ludo_of (9 scala sources)
+2026.06.17 10:11:16 INFO  time: compiled ludo_of in 0.6s
+2026.06.17 14:36:36 INFO  compiling ludo_of (9 scala sources)
+2026.06.17 14:36:36 INFO  time: compiled ludo_of in 0.61s
+2026.06.17 14:37:59 INFO  compiling ludo_of (9 scala sources)
+2026.06.17 14:37:59 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:37:59 INFO  time: compiled ludo_of in 0.46s
+2026.06.17 14:38:30 INFO  compiling ludo_of (9 scala sources)
+Jun 17, 2026 2:38:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.06.17 14:38:30 INFO  time: compiled ludo_of in 0.52s
+2026.06.17 14:38:59 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:38:59 INFO  time: compiled ludo_of in 0.33s
+2026.06.17 14:39:08 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:39:08 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:39:08 INFO  time: compiled ludo_of in 0.36s
+2026.06.17 14:39:47 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:39:47 INFO  time: compiled ludo_of in 0.21s
+2026.06.17 14:40:10 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:40:11 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:40:10 INFO  time: compiled ludo_of in 0.35s
+2026.06.17 14:40:59 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:40:59 INFO  time: compiled ludo_of in 0.38s
+2026.06.17 14:41:09 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:41:09 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:41:09 INFO  time: compiled ludo_of in 0.3s
+2026.06.17 14:41:09 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:41:09 INFO  time: compiled ludo_of in 0.28s
+2026.06.17 14:41:09 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:41:09 INFO  time: compiled ludo_of in 0.33s
+2026.06.17 14:41:25 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:41:25 INFO  time: compiled ludo_of in 0.49s
+2026.06.17 14:41:25 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:41:25 INFO  time: compiled ludo_of in 0.14s
+2026.06.17 14:41:25 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:41:25 INFO  time: compiled ludo_of in 0.12s
+2026.06.17 14:41:35 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:41:35 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:41:35 INFO  time: compiled ludo_of in 0.44s
+2026.06.17 14:41:52 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:41:52 INFO  time: compiled ludo_of in 0.38s
+2026.06.17 14:41:52 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:41:52 INFO  time: compiled ludo_of in 0.14s
+2026.06.17 14:41:52 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:41:52 INFO  time: compiled ludo_of in 0.12s
+2026.06.17 14:42:06 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:42:06 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:42:06 INFO  time: compiled ludo_of in 0.17s
+2026.06.17 14:42:15 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:42:15 INFO  time: compiled ludo_of in 0.2s
+2026.06.17 14:42:28 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:42:28 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 14:42:57 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:42:57 INFO  time: compiled ludo_of in 0.23s
+2026.06.17 14:43:09 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:43:09 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:43:09 INFO  time: compiled ludo_of in 0.43s
+2026.06.17 14:43:18 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:43:18 INFO  time: compiled ludo_of in 0.26s
+2026.06.17 14:43:33 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:43:33 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:43:33 INFO  time: compiled ludo_of in 0.26s
+2026.06.17 14:43:46 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:43:46 INFO  time: compiled ludo_of in 0.23s
+2026.06.17 14:43:46 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:43:46 INFO  time: compiled ludo_of in 0.17s
+2026.06.17 14:43:52 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:43:52 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:43:52 INFO  time: compiled ludo_of in 0.19s
+2026.06.17 14:44:06 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:44:06 INFO  time: compiled ludo_of in 0.25s
+2026.06.17 14:45:37 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:45:37 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:45:37 INFO  time: compiled ludo_of in 0.2s
+2026.06.17 14:45:55 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:45:55 INFO  time: compiled ludo_of in 0.37s
+2026.06.17 14:46:06 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:46:06 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:46:06 INFO  time: compiled ludo_of in 0.24s
+2026.06.17 14:46:14 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:46:14 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 14:46:23 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:46:23 INFO  time: compiled ludo_of in 0.25s
+2026.06.17 14:46:33 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:46:33 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/shared/Shared.scala
+2026.06.17 14:46:33 INFO  time: compiled ludo_of in 0.2s
+2026.06.17 14:46:40 INFO  compiling ludo_of (3 scala sources)
+2026.06.17 14:46:40 INFO  time: compiled ludo_of in 0.22s
+2026.06.17 14:47:39 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:47:39 INFO  time: compiled ludo_of in 0.24s
+2026.06.17 14:50:51 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:50:51 INFO  time: compiled ludo_of in 0.27s
+2026.06.17 14:51:21 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:51:21 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BaseZone.scala
+2026.06.17 14:51:21 INFO  time: compiled ludo_of in 0.26s
+2026.06.17 14:51:49 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:51:49 INFO  time: compiled ludo_of in 0.28s
+2026.06.17 14:51:49 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:51:49 INFO  time: compiled ludo_of in 0.22s
+2026.06.17 14:52:03 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:52:03 INFO  time: compiled ludo_of in 0.28s
+Jun 17, 2026 2:52:54 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1213
+2026.06.17 14:53:06 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:53:06 INFO  time: compiled ludo_of in 0.3s
+2026.06.17 14:54:17 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:54:17 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:54:17 INFO  time: compiled ludo_of in 0.35s
+Jun 17, 2026 2:54:30 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1329
+2026.06.17 14:54:47 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 14:54:47 INFO  time: compiled ludo_of in 0.46s
+2026.06.17 14:54:47 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:54:47 INFO  time: compiled ludo_of in 0.14s
+2026.06.17 14:55:11 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 14:55:11 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:55:11 INFO  time: compiled ludo_of in 0.34s
+2026.06.17 14:55:57 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:55:57 INFO  time: compiled ludo_of in 0.32s
+2026.06.17 14:56:04 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:56:04 INFO  time: compiled ludo_of in 0.29s
+Jun 17, 2026 2:57:46 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1914
+2026.06.17 14:57:55 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:57:55 INFO  time: compiled ludo_of in 0.28s
+2026.06.17 14:58:10 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:58:10 INFO  time: compiled ludo_of in 0.27s
+2026.06.17 14:58:36 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:58:36 INFO  time: compiled ludo_of in 0.41s
+2026.06.17 14:58:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:58:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:58:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:58:53 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:58:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:58:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/BoardView.scala
+2026.06.17 14:58:53 INFO  time: compiled ludo_of in 0.32s
+2026.06.17 14:59:05 INFO  compiling ludo_of (1 scala source)
+2026.06.17 14:59:05 INFO  time: compiled ludo_of in 0.32s
+2026.06.17 15:00:45 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:00:45 INFO  time: compiled ludo_of in 0.29s
+2026.06.17 15:01:14 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 15:01:14 INFO  time: compiled ludo_of in 0.34s
+2026.06.17 15:01:44 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:01:44 INFO  time: compiled ludo_of in 0.18s
+2026.06.17 15:04:33 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 15:04:33 INFO  time: compiled ludo_of in 0.2s
+2026.06.17 15:04:53 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:04:53 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/ControlPanel.scala
+2026.06.17 15:04:53 INFO  time: compiled ludo_of in 0.23s
+2026.06.17 15:05:09 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:05:09 INFO  time: compiled ludo_of in 0.19s
+2026.06.17 15:05:18 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:05:18 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/ControlPanel.scala
+2026.06.17 15:05:18 INFO  time: compiled ludo_of in 0.2s
+2026.06.17 15:05:28 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:05:28 INFO  time: compiled ludo_of in 0.29s
+2026.06.17 15:05:35 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:05:35 INFO  time: compiled ludo_of in 0.18s
+2026.06.17 15:05:46 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:05:46 INFO  time: compiled ludo_of in 0.13s
+2026.06.17 15:06:11 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:06:11 INFO  time: compiled ludo_of in 0.19s
+2026.06.17 15:06:24 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:06:25 WARN  Could not load snapshot text for /Users/pamelavillar/Downloads/ludo_of/src/main/scala/ludo/gui/components/ControlPanel.scala
+2026.06.17 15:06:24 INFO  time: compiled ludo_of in 0.43s
+2026.06.17 15:06:36 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:06:36 INFO  time: compiled ludo_of in 0.18s
+Jun 17, 2026 3:06:39 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2954
+2026.06.17 15:06:46 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:06:46 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:07:07 INFO  compiling ludo_of (4 scala sources)
+2026.06.17 15:07:07 INFO  time: compiled ludo_of in 0.32s
+2026.06.17 15:09:29 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:09:29 INFO  time: compiled ludo_of in 0.16s
+2026.06.17 15:09:49 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:09:49 INFO  time: compiled ludo_of in 0.16s
+2026.06.17 15:11:20 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:11:20 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:12:05 INFO  compiling ludo_of (2 scala sources)
+2026.06.17 15:12:05 INFO  time: compiled ludo_of in 0.21s
+2026.06.17 15:12:24 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:24 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:12:28 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:28 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:12:32 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:32 INFO  time: compiled ludo_of in 0.13s
+2026.06.17 15:12:38 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:38 INFO  time: compiled ludo_of in 0.13s
+2026.06.17 15:12:49 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:49 INFO  time: compiled ludo_of in 0.13s
+2026.06.17 15:12:58 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:12:58 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:13:35 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:13:35 INFO  time: compiled ludo_of in 0.25s
+2026.06.17 15:13:58 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:13:58 INFO  time: compiled ludo_of in 0.16s
+2026.06.17 15:14:17 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:14:17 INFO  time: compiled ludo_of in 0.17s
+2026.06.17 15:14:26 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:14:26 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:14:31 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:14:31 INFO  time: compiled ludo_of in 0.13s
+2026.06.17 15:14:57 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:14:57 INFO  time: compiled ludo_of in 0.15s
+2026.06.17 15:15:31 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:15:31 INFO  time: compiled ludo_of in 0.17s
+2026.06.17 15:15:37 INFO  compiling ludo_of (1 scala source)
+2026.06.17 15:15:37 INFO  time: compiled ludo_of in 0.14s

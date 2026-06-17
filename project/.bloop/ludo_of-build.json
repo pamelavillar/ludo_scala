@@ -63,7 +63,7 @@
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-control_2.12/1.12.5/util-control_2.12-1.12.5.jar",
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/protocol_2.12/1.12.5/protocol_2.12-1.12.5.jar",
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/template-resolver/0.1/template-resolver-0.1.jar",
-            "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-position_2.12/1.12.5/util-position_2.12-1.12.5.jar",
+            "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-posicion_2.12/1.12.5/util-posicion_2.12-1.12.5.jar",
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/zinc-compile-core_2.12/1.12.0/zinc-compile-core_2.12-1.12.0.jar",
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.12.5/util-interface-1.12.5.jar",
             "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/jline/jline/2.14.7-sbt-9a88bc413e2b34a4580c001c654d1a7f4f65bf18/jline-2.14.7-sbt-9a88bc413e2b34a4580c001c654d1a7f4f65bf18.jar",
@@ -276,7 +276,7 @@
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-control_2.12/1.12.5/util-control_2.12-1.12.5.jar",
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/protocol_2.12/1.12.5/protocol_2.12-1.12.5.jar",
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/template-resolver/0.1/template-resolver-0.1.jar",
-                "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-position_2.12/1.12.5/util-position_2.12-1.12.5.jar",
+                "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-posicion_2.12/1.12.5/util-posicion_2.12-1.12.5.jar",
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/zinc-compile-core_2.12/1.12.0/zinc-compile-core_2.12-1.12.0.jar",
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-interface/1.12.5/util-interface-1.12.5.jar",
                 "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/jline/jline/2.14.7-sbt-9a88bc413e2b34a4580c001c654d1a7f4f65bf18/jline-2.14.7-sbt-9a88bc413e2b34a4580c001c654d1a7f4f65bf18.jar",
@@ -1121,18 +1121,18 @@
                 },
                 {
                     "organization": "org.scala-sbt",
-                    "name": "util-position_2.12",
+                    "name": "util-posicion_2.12",
                     "version": "1.12.5",
                     "configurations": "default",
                     "artifacts": [
                         {
-                            "name": "util-position_2.12",
-                            "path": "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-position_2.12/1.12.5/util-position_2.12-1.12.5.jar"
+                            "name": "util-posicion_2.12",
+                            "path": "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-posicion_2.12/1.12.5/util-posicion_2.12-1.12.5.jar"
                         },
                         {
-                            "name": "util-position_2.12",
+                            "name": "util-posicion_2.12",
                             "classifier": "sources",
-                            "path": "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-position_2.12/1.12.5/util-position_2.12-1.12.5-sources.jar"
+                            "path": "/Users/pamelavillar/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-sbt/util-posicion_2.12/1.12.5/util-posicion_2.12-1.12.5-sources.jar"
                         }
                     ]
                 },

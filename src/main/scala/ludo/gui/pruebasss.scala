@@ -1,6 +1,6 @@
-object DebugTrackPositions extends App {
+object DebugTrackposicions extends App {
 
-  val trackPositions: Vector[(Int, Int)] = (
+  val trackposicions: Vector[(Int, Int)] = (
 
     (0 to 5).map(c => (c, 6)) ++
 
@@ -21,19 +21,19 @@ object DebugTrackPositions extends App {
 
   ).toVector
 
-  println("=== TRACK POSITIONS ===")
+  println("=== TRACK posicionS ===")
   println()
 
-  trackPositions.zipWithIndex.foreach { case ((x, y), idx) =>
+  trackposicions.zipWithIndex.foreach { case ((x, y), idx) =>
     println(f"$idx%2d -> ($x,$y)")
   }
 
   println()
-  println(s"Total positions: ${trackPositions.length}")
+  println(s"Total posicions: ${trackposicions.length}")
 
   // Buscar duplicados
   val duplicates =
-    trackPositions
+    trackposicions
       .groupBy(identity)
       .collect {
         case (pos, occurrences) if occurrences.size > 1 => pos
@@ -58,7 +58,7 @@ object DebugTrackPositions extends App {
 
     for (col <- 0 until boardSize) {
 
-      val idx = trackPositions.indexOf((col, row))
+      val idx = trackposicions.indexOf((col, row))
 
       if (idx >= 0)
         print(f"$idx%02d ")

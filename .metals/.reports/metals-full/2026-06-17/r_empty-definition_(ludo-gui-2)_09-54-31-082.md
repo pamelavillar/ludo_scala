@@ -4,10 +4,10 @@ empty definition using pc, found symbol in pc:
 empty definition using semanticdb
 empty definition using fallback
 non-local guesses:
-	 -ludo/shared/player.
-	 -scalafx/scene/layout/player.
-	 -player.
-	 -scala/Predef.player.
+	 -ludo/shared/jugador.
+	 -scalafx/scene/layout/jugador.
+	 -jugador.
+	 -scala/Predef.jugador.
 offset: 4293
 uri: file://<HOME>/Downloads/ludo-gui%202/src/main/scala/ludo/gui/components/ControlPanel.scala
 text:
@@ -31,7 +31,7 @@ import scalafx.scene.image.{Image,ImageView}
 //   • Botón "Lanzar dado"
 //   • Caja de mensajes del juego
 // ─────────────────────────────────────────────────────────────────────────────
-class ControlPanel(controller: ControllerInterface) extends HBox:
+class ControlPanel(controller: InterfazControlador) extends HBox:
 
   spacing = 12
   padding = Insets(16)
@@ -47,12 +47,12 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
     preserveRatio = false
 
   // ── Indicador de turno ────────────────────────────────────────────
-  private val turnLabel = new Label("Turno de: —"):
+  private val turnoLabel = new Label("Turno de: —"):
     font  = Font.font("Oswald", FontWeight.Medium, 16)
     style = "-fx-text-fill: #333;"
 
 
-  private val turnIndicator = new HBox:
+  private val indicaTurno = new HBox:
     spacing = 10
     alignment = Pos.CenterLeft
     children = Seq(
@@ -61,16 +61,16 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
         fill   = Color.Gray
         id     = "turn-circle"
       ,
-      turnLabel
+      turnoLabel
     )
 
 
   // ── Dado visual ───────────────────────────────────────────────────
-  private val diceLabel = new Label("?"):
+  private val labelDado = new Label("?"):
     font  = Font.font("Oswald", FontWeight.Medium, 25)
     style = "-fx-text-fill: #222;"
 
-  private val diceBox = new StackPane:
+  private val cajaDado = new StackPane:
     prefWidth  = 70
     prefHeight = 70
     alignment  = Pos.Center
@@ -81,10 +81,10 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
       -fx-border-radius: 10;
       -fx-background-radius: 10;
     """
-    children = Seq(diceLabel)
+    children = Seq(labelDado)
 
          // ── Botón lanzar dado ─────────────────────────────────────────────
-  private val rollButton = new Button("Lanzar dado"):
+  private val botonLanzar = new Button("Lanzar dado"):
     prefWidth  = 160
     prefHeight = 44
     font       = Font.font("Oswald", FontWeight.Medium, 15)
@@ -94,17 +94,17 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
       -fx-background-radius: 8;
       -fx-cursor: hand;
     """
-    onAction = _ => controller.rollDice()
+    onAction = _ => controller.lanzarDado()
 
-  rollButton.onMouseEntered = _ =>
-    rollButton.style = """
+  botonLanzar.onMouseEntered = _ =>
+    botonLanzar.style = """
       -fx-background-color: #0D47A1;
       -fx-text-fill: white;
       -fx-background-radius: 8;
       -fx-cursor: hand;
     """
-  rollButton.onMouseExited = _ =>
-    rollButton.style = """
+  botonLanzar.onMouseExited = _ =>
+    botonLanzar.style = """
       -fx-background-color: #1565C0;
       -fx-text-fill: white;
       -fx-background-radius: 8;
@@ -112,7 +112,7 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
     """
 
   // ── Mensajes del juego ────────────────────────────────────────────
-  private val messageArea = new TextArea:
+  private val areaMensaje = new TextArea:
     prefHeight = 90
     editable   = false
     wrapText   = true
@@ -120,47 +120,47 @@ class ControlPanel(controller: ControllerInterface) extends HBox:
     style      = "-fx-control-inner-background: #F0F0F0; -fx-border-radius: 6;"
 
   private def appendMessage(text: String): Unit =
-    messageArea.appendText(s"• $text\n")
-    messageArea.scrollTop = Double.MaxValue
+    areaMensaje.appendText(s"• $text\n")
+    areaMensaje.scrollTop = Double.MaxValue
 
   // ── Fila superior: dado + botón + turno ───────────────────────────
   private val topRow = new HBox:
     spacing   = 20
     alignment = Pos.CenterLeft
     padding   = Insets(0, 0, 8, 0)
-    children  = Seq(diceBox, rollButton, turnIndicator)
+    children  = Seq(cajaDado, botonLanzar, indicaTurno)
 
-  children = Seq(topRow, messageArea)
+  children = Seq(topRow, areaMensaje)
 
 
-  private val rightPanel = new VBox:
+  private val parteDerecha = new VBox:
     spacing = 12
-    children = Seq(topRow, messageArea)
+    children = Seq(topRow, areaMensaje)
   
-  children = Seq(imageView,rightPanel)
+  children = Seq(imageView,parteDerecha)
 
   // ── API pública ───────────────────────────────────────────────────
 
-  def showDice(value: Int): Unit =
-    diceLabel.text = diceFace(value)
+  def mostrar_dado(value: Int): Unit =
+    labelDado.text = caraDado(value)
 
-  def updateTurn(player: PlayerInterface): Unit =
-    val color = CellView.colorOf(player.color)
-    turnLabel.text = s"Turno de: ${player.name}"
+  def updateTurn(jugador: InterfazJugador): Unit =
+    val color = CellView.colorOf(jugador.color)
+    turnoLabel.text = s"Turno de: ${jugador.name}"
     // actualiza el círculo de color de turno
-    turnIndicator.children.head match
+    indicaTurno.children.head match
       case c: javafx.scene.shape.Circle =>
         c.setFill(color)
       case _ =>
 
   def showMessage(text: String): Unit =
-    turnLabel.text = s"${pla@@yer.name}"
+    turnoLabel.text = s"${pla@@yer.name}"
 
-  def setRollEnabled(enabled: Boolean): Unit =
-    rollButton.disable = !enabled
+  def dadoHabilitado(enabled: Boolean): Unit =
+    botonLanzar.disable = !enabled
 
   // ── Caras del dado como emoji ─────────────────────────────────────
-  private def diceFace(n: Int): String = n match
+  private def caraDado(n: Int): String = n match
     case 1 => "1"
     case 2 => "2"
     case 3 => "3"

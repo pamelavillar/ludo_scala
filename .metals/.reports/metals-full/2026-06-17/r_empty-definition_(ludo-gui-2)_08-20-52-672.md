@@ -25,7 +25,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Polygon
 import scalafx.scence.@@image._
 
-class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceClick: Int => Unit) extends GridPane:
+class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPieceClick: Int => Unit) extends GridPane:
 
   // ── Configuración visual ─────────────────────────────────────────
 
@@ -44,24 +44,24 @@ class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceC
 
 
 
-  private val baseRed = new BaseZone(PlayerColor.Red, board.basePieces(PlayerColor.Red), onPieceClick)
+  private val baseRed = new BaseZone(JugadorColor.Red, board.basePieces(JugadorColor.Red), onPieceClick)
 
-  private val baseBlue =  new BaseZone(PlayerColor.Blue, board.basePieces(PlayerColor.Blue), onPieceClick)
+  private val baseBlue =  new BaseZone(JugadorColor.Blue, board.basePieces(JugadorColor.Blue), onPieceClick)
 
-  private val baseGreen = new BaseZone(PlayerColor.Green, board.basePieces(PlayerColor.Green), onPieceClick)
+  private val baseGreen = new BaseZone(JugadorColor.Green, board.basePieces(JugadorColor.Green), onPieceClick)
 
-  private val baseYellow = new BaseZone(PlayerColor.Yellow, board.basePieces(PlayerColor.Yellow), onPieceClick)
+  private val baseYellow = new BaseZone(JugadorColor.Yellow, board.basePieces(JugadorColor.Yellow), onPieceClick)
   // ── Centro ──────────────────────────────────────────────────────
 
-  private val centerPane = buildCenter()
+  private val areaCasas = dibujarCasas()
 
   // ── Referencias visuales de casillas ────────────────────────────
 
-  private var trackCells: Map[Int, Node] = Map.empty
+  private var CasillaPista: Map[Int, Node] = Map.empty
 
   // ── Track visual del tablero ────────────────────────────────────
 
-  val trackPositions: Vector[(Int, Int)] = (
+  val trackposicions: Vector[(Int, Int)] = (
 
     (0 to 5).map(c => (c, 6)) ++
 
@@ -84,23 +84,23 @@ class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceC
 
   ).toVector
 
-  val homeTrackPositions: Map[PlayerColor, Vector[(Int, Int)]] = Map(
-    PlayerColor.Red -> ((1 to 5).map(c => (c, 7))).toVector,
-    PlayerColor.Blue -> (1 to 5).map(r => (7, r)).toVector,
-    PlayerColor.Green ->  (9 to 13).map(r => (7, r)).reverse.toVector,
-    PlayerColor.Yellow -> (9 to 13).map(c =>(c,7)).reverse.toVector
+  val casaTrackPosiciones: Map[JugadorColor, Vector[(Int, Int)]] = Map(
+    JugadorColor.Red -> ((1 to 5).map(c => (c, 7))).toVector,
+    JugadorColor.Blue -> (1 to 5).map(r => (7, r)).toVector,
+    JugadorColor.Green ->  (9 to 13).map(r => (7, r)).reverse.toVector,
+    JugadorColor.Yellow -> (9 to 13).map(c =>(c,7)).reverse.toVector
   )
 
   // ── Construcción inicial ────────────────────────────────────────
 
-  buildLayout(board)
+  dibujarTablero(board)
 
   // ── Layout principal ────────────────────────────────────────────
 
-  private def buildLayout(currentBoard: BoardInterface): Unit =
+  private def dibujarTablero(currentBoard: InterfazTablero): Unit =
 
     children.clear()
-    trackCells = Map.empty
+    CasillaPista = Map.empty
 
     columnConstraints.clear()
     rowConstraints.clear()
@@ -129,22 +129,22 @@ class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceC
     placeAt(baseYellow, 9, 9, 6, 6)
 
     // Centro
-    placeAt(centerPane, 6, 6, 3, 3)
+    placeAt(areaCasas, 6, 6, 3, 3)
 
     // Casillas del track
     // 1) Track externo
-    currentBoard.trackCells.sortBy(_.position).zipWithIndex.foreach { case (cell, idx) =>
-      val (col, row) = trackPositions(idx)
+    currentBoard.CasillaPista.sortBy(_.posicion).zipWithIndex.foreach { case (cell, idx) =>
+      val (col, row) = trackposicions(idx)
       val cellNode = CellView(cell, onPieceClick)
       placeAt(cellNode.delegate, col, row)
     }
 
 
-    currentBoard.homeCells.foreach { case (color, cells) =>
-      val positions = homeTrackPositions(color)
+    currentBoard.CasillaCasa.foreach { case (color, cells) =>
+      val posicions = casaTrackPosiciones(color)
 
-      cells.sortBy(_.position).zipWithIndex.foreach { case (cell, idx) =>
-        val (col, row) = positions(idx)
+      cells.sortBy(_.posicion).zipWithIndex.foreach { case (cell, idx) =>
+        val (col, row) = posicions(idx)
         val cellNode = CellView(cell, onPieceClick)
         placeAt(cellNode.delegate, col, row)
       }
@@ -152,17 +152,17 @@ class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceC
 
   // ── Actualización visual ────────────────────────────────────────
 
-  def updateBoard(newBoard: BoardInterface): Unit =
-    baseRed.update(newBoard.basePieces(PlayerColor.Red))
-    baseBlue.update(newBoard.basePieces(PlayerColor.Blue))
-    baseGreen.update(newBoard.basePieces(PlayerColor.Green))
-    baseYellow.update(newBoard.basePieces(PlayerColor.Yellow))
+  def updateBoard(nuevoTablero: InterfazTablero): Unit =
+    baseRed.update(nuevoTablero.basePieces(JugadorColor.Red))
+    baseBlue.update(nuevoTablero.basePieces(JugadorColor.Blue))
+    baseGreen.update(nuevoTablero.basePieces(JugadorColor.Green))
+    baseYellow.update(nuevoTablero.basePieces(JugadorColor.Yellow))
 
-    buildLayout(newBoard)
+    dibujarTablero(nuevoTablero)
 
   // ── Centro del tablero ──────────────────────────────────────────
 
-  private def buildCenter(): Node =
+  private def dibujarCasas(): Node =
 
     val size = CellView.SIZE * 3
     val half = size / 2
@@ -207,9 +207,9 @@ class BoardView(board: BoardInterface, players: Vector[PlayerInterface],onPieceC
   // ── Helpers ─────────────────────────────────────────────────────
 
   private def piecesOf(
-    color: PlayerColor,
-    b: BoardInterface
-  ): Vector[PieceInterface] =
+    color: JugadorColor,
+    b: InterfazTablero
+  ): Vector[InterfazPieza] =
     b.cells
       .flatMap(_.piece)
       .filter(_.color == color)

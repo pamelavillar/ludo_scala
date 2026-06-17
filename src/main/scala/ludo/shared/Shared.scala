@@ -1,60 +1,60 @@
 package ludo.shared
 
 // ── Colores de jugador ────────────────────────────────────────────
-enum PlayerColor:
+enum JugadorColor:
   case Red, Blue, Green, Yellow
 
 // ── Modelos ───────────────────────────────────────────────────────
-trait PieceInterface:
+trait InterfazPieza:
   def id: Int
-  def color: PlayerColor
-  def position: Int
-  def isAtBase: Boolean
-  def isHome: Boolean
+  def color: JugadorColor
+  def posicion: Int
+  def estaEnBase: Boolean
+  def estaEnCasa: Boolean
 
-trait CellInterface:
-  def position: Int
-  def isTrack: Boolean
-  def piece: Option[PieceInterface]
-  def isStartOf: Option[PlayerColor]
-  def isHomeOf: Option[PlayerColor]
+trait InterfazCasilla:
+  def posicion: Int
+  def enPista: Boolean
+  def piece: Option[InterfazPieza]
+  def esInicioPieza: Option[JugadorColor]
+  def estaEnCasaOf: Option[JugadorColor]
 
-trait BoardInterface:
-  def trackCells: Vector[CellInterface]
+trait InterfazTablero:
+  def CasillaPista: Vector[InterfazCasilla]
   def size: Int
-  def homeCells: Map[PlayerColor, Vector[CellInterface]] // 5 por color
-  def basePieces: Map[PlayerColor, Vector[PieceInterface]]
+  def CasillaCasa: Map[JugadorColor, Vector[InterfazCasilla]] // 5 por color
+  def basePieces: Map[JugadorColor, Vector[InterfazPieza]]
 
-  def cells: Vector[CellInterface] = trackCells ++ homeCells.values.flatten
+  def cells: Vector[InterfazCasilla] = CasillaPista ++ CasillaCasa.values.flatten
 
-trait PlayerInterface:
+trait InterfazJugador:
   def name: String
-  def color: PlayerColor
-  def pieces: Vector[PieceInterface]
-  def piecesAtBase: Vector[PieceInterface]
-  def piecesOnBoard: Vector[PieceInterface]
-  def piecesAtHome: Vector[PieceInterface]
+  def color: JugadorColor
+  def pieces: Vector[InterfazPieza]
+  def PiezasEnBase: Vector[InterfazPieza]
+  def PiezasEnTablero: Vector[InterfazPieza]
+  def piezasEnCasa: Vector[InterfazPieza]
 
 // ── Eventos ───────────────────────────────────────────────────────
 sealed trait GameEvent
-case class DiceRolled(value: Int)                                        extends GameEvent
-case class PieceMoved(oldBoard: BoardInterface, newBoard: BoardInterface) extends GameEvent
-case class TurnChanged(player: PlayerInterface)                          extends GameEvent
-case class MessageUpdated(text: String)                                  extends GameEvent
-case class GameOver(winner: PlayerInterface)                             extends GameEvent
-case class GameStarted(board: BoardInterface)                            extends GameEvent
+case class LanzarDado(value: Int)                                        extends GameEvent
+case class MoverPieza(oldBoard: InterfazTablero, nuevoTablero: InterfazTablero) extends GameEvent
+case class CambioTurno(jugador: InterfazJugador)                          extends GameEvent
+case class ActualizarMensajes(text: String)                                  extends GameEvent
+case class gameOver(winner: InterfazJugador)                             extends GameEvent
+case class inicioJuego(board: InterfazTablero)                            extends GameEvent
 
 // ── Contrato Controller ───────────────────────────────────────────
-trait ControllerInterface:
-  def board: BoardInterface
-  def currentPlayer: PlayerInterface
-  def players: Vector[PlayerInterface]
-  def lastDiceValue: Option[Int]
-  def movablePieces: Vector[PieceInterface]
+trait InterfazControlador:
+  def board: InterfazTablero
+  def jugadorActual: InterfazJugador
+  def jugadores: Vector[InterfazJugador]
+  def dadoUltimoValor: Option[Int]
+  def piezasMovibles: Vector[InterfazPieza]
 
-  def startGame(playerCount: Int): Unit
-  def rollDice(): Unit
-  def movePiece(pieceId: Int): Unit
+  def comenzarJuego(jugadorCount: Int): Unit
+  def lanzarDado(): Unit
+  def moverPieza(pieceId: Int): Unit
 
   def subscribe(handler: GameEvent => Unit): Unit
   def unsubscribe(handler: GameEvent => Unit): Unit

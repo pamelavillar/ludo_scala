@@ -13,9 +13,9 @@ import scalafx.geometry.{Insets, Pos}
 // BaseZone — zona de inicio (casa) de un equipo: cuadrícula 2×2 con sus fichas
 //
 // Equivalente a BaseTeam.scala del repo original.
-// Se actualiza cuando recibe un PieceMoved con cambios en las fichas de base.
+// Se actualiza cuando recibe un MoverPieza con cambios en las fichas de base.
 // ─────────────────────────────────────────────────────────────────────────────
-class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick: Int => Unit) extends GridPane:
+class BaseZone(color: JugadorColor, pieces: Vector[InterfazPieza], onPieceClick: Int => Unit) extends GridPane:
 
   alignment = Pos.Center
   hgap = 6
@@ -23,10 +23,10 @@ class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick:
   padding = Insets(10)
 
   private val img = color match
-    case PlayerColor.Red    => "/img/francia.jpg"
-    case PlayerColor.Blue   => "/img/cabo_verde.png"
-    case PlayerColor.Green  => "/img/brazil.png"
-    case PlayerColor.Yellow => "/img/españa.png"
+    case JugadorColor.Red    => "/img/francia.jpg"
+    case JugadorColor.Blue   => "/img/cabo_verde.png"
+    case JugadorColor.Green  => "/img/brazil.png"
+    case JugadorColor.Yellow => "/img/españa.png"
 
 
   style = s"""
@@ -44,7 +44,7 @@ class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick:
   """
 
   // dibuja las 4 fichas en la cuadrícula 2×2
-  private def drawPieces(ps: Vector[PieceInterface]): Unit =
+  private def dibujarPiezas(ps: Vector[InterfazPieza]): Unit =
     children.clear()
     ps.zipWithIndex.foreach { (piece, idx) =>
       val row = idx / 2
@@ -56,7 +56,7 @@ class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick:
     }
 
   // fichas que ya salieron → casilla vacía gris
-  private def makeEmptySlot(): Node =
+  private def espaciosVacios(): Node =
     new StackPane:
       prefWidth  = CellView.SIZE
       prefHeight = CellView.SIZE
@@ -65,8 +65,8 @@ class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick:
         -fx-background-radius: 30;
       """
 
-  private def makePieceNode(piece: PieceInterface): Node =
-    if piece.isAtBase then
+  private def makePieceNode(piece: InterfazPieza): Node =
+    if piece.estaEnBase then
       val pieceColor = CellView.colorOf(piece.color)
       new StackPane:
         prefWidth  = CellView.SIZE
@@ -81,19 +81,19 @@ class BaseZone(color: PlayerColor, pieces: Vector[PieceInterface], onPieceClick:
           ,
           new Text(piece.id.toString):
             font  = Font.font("monospace", FontWeight.Bold, 16)
-            fill  = if piece.color == PlayerColor.Yellow then Color.Black else Color.White
+            fill  = if piece.color == JugadorColor.Yellow then Color.Black else Color.White
         )
         onMouseClicked = _ => onPieceClick(piece.id)
         style = "-fx-cursor: hand;"
     else
-      makeEmptySlot()
+      espaciosVacios()
 
   // Redibuja cuando cambia el estado del board
-  def update(newPieces: Vector[PieceInterface]): Unit =
-    drawPieces(newPieces)
+  def update(nuevasPiezas: Vector[InterfazPieza]): Unit =
+    dibujarPiezas(nuevasPiezas)
 
   // dibujado inicial
-  drawPieces(pieces)
+  dibujarPiezas(pieces)
 
   private def toHex(c: Color): String =
     f"#${(c.red * 255).toInt}%02X${(c.green * 255).toInt}%02X${(c.blue * 255).toInt}%02X"
