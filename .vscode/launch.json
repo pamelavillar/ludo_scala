@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "scala",
+      "request": "launch",
+      "name": "LudoApp",
+      "mainClass": "ludo.gui.LudoApp",
+      "buildTarget": "file:/Users/pamelavillar/Downloads/ludo-gui%202/?id=ludo-gui-2",
+      "args": [],
+      "jvmOptions": [
+        "-Dprism.order=sw"
+      ],
+      "env": {}
+    },
+    {
+      "type": "scala",
+      "request": "launch",
+      "name": "DebugTrackPositions",
+      "mainClass": "DebugTrackPositions",
+      "buildTarget": "file:/Users/pamelavillar/Downloads/ludo-gui%202/?id=ludo-gui-2",
+      "args": [],
+      "jvmOptions": [],
+      "env": {}
+    }
+  ]
+}

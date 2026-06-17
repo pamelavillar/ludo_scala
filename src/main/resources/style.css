@@ -1,0 +1,28 @@
+/* style.css — estilos globales de la GUI de Ludo */
+
+.root {
+    -fx-font-family: "monospace";
+    -fx-background-color: #ECEFF1;
+}
+
+/* Botones generales */
+.button {
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+/* Área de mensajes */
+.text-area .content {
+    -fx-background-color: #F0F0F0;
+}
+
+/* Menú */
+.menu-bar {
+    -fx-background-color: #263238;
+}
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+}
+.menu-bar .menu:hover {
+    -fx-background-color: #37474F;
+}

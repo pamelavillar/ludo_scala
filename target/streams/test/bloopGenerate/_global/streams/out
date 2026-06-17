@@ -1,0 +1,4 @@
+[debug] [ludo_of-test] Classpath dependencies List()
+[debug] [ludo_of-test] Dependencies from configurations List(ludo_of)
+[debug] Bloop wrote the configuration of project 'ludo_of-test' to '/Users/pamelavillar/Downloads/ludo_of/.bloop/ludo_of-test.json'
+[success] Generated .bloop/ludo_of-test.json
