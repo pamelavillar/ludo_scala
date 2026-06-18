@@ -32,3 +32,5 @@ libraryDependencies ++= Seq(
 )
 
 fork := true
+
+Compile / mainClass := Some("ludo.gui.LudoApp")

@@ -3,6 +3,7 @@ package ludo.gui.components
 import ludo.shared.*
 import scalafx.Includes.*
 import scalafx.scene.layout.*
+import ludo.model.Casilla
 import scalafx.scene.shape.Circle
 import scalafx.scene.paint.Color
 import scalafx.scene.text.{Text, Font, FontWeight}
@@ -87,7 +88,18 @@ object CellView:
           stroke = Color.White
           strokeWidth = 2
 
-        val label = new Text(piece.id.toString):
+        val cantidadPiezas =
+          cell match
+            case c: Casilla => c.cantidadPiezas
+            case _ => if cell.piece.nonEmpty then 1 else 0
+
+        val textoFicha =
+          if cantidadPiezas >= 2 then
+            cantidadPiezas.toString
+          else
+            ""
+
+        val label = new Text(textoFicha):
           font = Font.font("monospace", FontWeight.Bold, 16)
 
           fill =

@@ -2,7 +2,7 @@ package ludo.gui
 
 import ludo.shared.*
 import ludo.gui.components.*
-import ludo.gui.mock.MockController
+import ludo.model.GameController
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.scene.Scene
@@ -19,7 +19,7 @@ object LudoApp extends JFXApp3:
   override def start(): Unit =
 
     // ── 1. Controller (cambia MockController por el real cuando esté listo) ──
-    val controller: InterfazControlador = new MockController()
+    val controller: InterfazControlador = new GameController()
 
     // ── 2. Componentes ───────────────────────────────────────────────────────
     val boardView    = new BoardView(controller.board,controller.jugadores, pieceId => controller.moverPieza(pieceId))
