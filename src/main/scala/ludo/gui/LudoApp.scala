@@ -18,19 +18,15 @@ object LudoApp extends JFXApp3:
 
   override def start(): Unit =
 
-    // ── 1. Controller (cambia MockController por el real cuando esté listo) ──
+    // 1. Controller
     val controller: InterfazControlador = new GameController()
 
-    // ── 2. Componentes ───────────────────────────────────────────────────────
+    // 2. Componentes 
     val boardView    = new BoardView(controller.board,controller.jugadores, pieceId => controller.moverPieza(pieceId))
     val controlPanel = new ControlPanel(controller)
 
-    // ── 3. Suscripción a eventos ─────────────────────────────────────────────
-    // TODA la lógica de reacción está aquí centralizada.
-    // Cada evento actualiza solo el componente que corresponde.
+    // 3. Suscripción a eventos
     controller.subscribe { event =>
-      // Los eventos del controller pueden venir de otro hilo.
-      // Platform.runLater garantiza que los cambios de UI ocurran en el hilo de JavaFX.
       Platform.runLater {
         event match
           case inicioJuego(board) =>
@@ -38,11 +34,10 @@ object LudoApp extends JFXApp3:
 
           case LanzarDado(value) =>
             controlPanel.mostrar_dado(value)
-            controlPanel.dadoHabilitado(false)   // espera que el jugador mueva
-
+            controlPanel.dadoHabilitado(false) 
           case MoverPieza(_, nuevoTablero) =>
             boardView.updateBoard(nuevoTablero)
-            controlPanel.dadoHabilitado(true)    // nuevo turno, puede volver a tirar
+            controlPanel.dadoHabilitado(true)  
 
           case CambioTurno(jugador) =>
             controlPanel.updateTurn(jugador)
@@ -56,16 +51,16 @@ object LudoApp extends JFXApp3:
       }
     }
 
-    // ── 4. Menú ───────────────────────────────────────────────────────────────
+    // 4. Menú
     val menuBar = buildMenuBar(controller)
 
-    // ── 5. Layout principal ───────────────────────────────────────────────────
+    // 5. Layout principal 
     val root = new BorderPane:
       top    = menuBar
       center = boardView
       bottom = controlPanel
 
-    // ── 6. Escena y Stage ────────────────────────────────────────────────────
+    // 6. Escena y Stage
     stage = new PrimaryStage:
       title  = "Ludo"
       width  = 620
@@ -73,10 +68,10 @@ object LudoApp extends JFXApp3:
       scene  = new Scene(root):
         stylesheets.add(getClass.getResource("/style.css").toExternalForm)
 
-    // ── 7. Arranca el juego (2 jugadores por defecto) ─────────────────────────
-    controller.comenzarJuego(2)
+    // 7. Arranca el juego (2 jugadores por defecto)
+    controller.comenzarJuego(3)
 
-  // ── Menú de partida ───────────────────────────────────────────────────────
+  // Menú de partida
   private def buildMenuBar(controller: InterfazControlador): MenuBar =
     val gameMenu = new Menu("Partida"):
       items = Seq(
