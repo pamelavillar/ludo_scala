@@ -10,13 +10,6 @@ import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.effect.DropShadow
 import scalafx.scene.image.{Image,ImageView}
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ControlPanel — panel inferior con:
-//   • Indicador del jugador actual
-//   • Cara visual del dado
-//   • Botón "Lanzar dado"
-//   • Caja de mensajes del juego
-// ─────────────────────────────────────────────────────────────────────────────
 class ControlPanel(controller: InterfazControlador) extends HBox:
 
   spacing = 12
@@ -32,7 +25,6 @@ class ControlPanel(controller: InterfazControlador) extends HBox:
     fitHeight = 180
     preserveRatio = false
 
-  // TURNO
   private val turnoLabel = new Label("Turno de: —"):
     font  = Font.font("Oswald", FontWeight.Medium, 16)
     style = "-fx-text-fill: #333;"
@@ -51,7 +43,6 @@ class ControlPanel(controller: InterfazControlador) extends HBox:
     )
 
 
-  // DADO
   private val labelDado = new Label("?"):
     font  = Font.font("Oswald", FontWeight.Medium, 25)
     style = "-fx-text-fill: #222;"
@@ -69,7 +60,6 @@ class ControlPanel(controller: InterfazControlador) extends HBox:
     """
     children = Seq(labelDado)
 
-  // ── Botón lanzar dado ─────────────────────────────────────────────
   private val botonLanzar = new Button("Lanzar dado"):
     prefWidth  = 160
     prefHeight = 44
@@ -140,7 +130,7 @@ class ControlPanel(controller: InterfazControlador) extends HBox:
   def dadoHabilitado(enabled: Boolean): Unit =
     botonLanzar.disable = !enabled
 
-  //  caras del dado 
+
   private def caraDado(n: Int): String = n match
     case 1 => "1"
     case 2 => "2"

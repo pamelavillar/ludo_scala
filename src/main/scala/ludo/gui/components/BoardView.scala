@@ -11,7 +11,6 @@ import scalafx.scene.image._
 
 class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPieceClick: Int => Unit) extends GridPane:
 
-  // ── Configuración visual ─────────────────────────────────────────
 
   hgap = 2
   vgap = 2
@@ -20,22 +19,18 @@ class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPie
 
   style = """ -fx-background-color: #EEEEEE; -fx-background-radius: 12;"""
 
-  // ── Bases ────────────────────────────────────────────────────────
 
 
   private val baseRed = new BaseZone(JugadorColor.Red, board.basePieces(JugadorColor.Red), onPieceClick)
   private val baseBlue =  new BaseZone(JugadorColor.Blue, board.basePieces(JugadorColor.Blue), onPieceClick)
   private val baseGreen = new BaseZone(JugadorColor.Green, board.basePieces(JugadorColor.Green), onPieceClick)
   private val baseYellow = new BaseZone(JugadorColor.Yellow, board.basePieces(JugadorColor.Yellow), onPieceClick)
-  // ── Centro ──────────────────────────────────────────────────────
 
   private val areaCasas = dibujarCasas()
 
-  // ── Referencias visuales de casillas ────────────────────────────
 
   private var CasillaPista: Map[Int, Node] = Map.empty
 
-  // ── Track visual del tablero ────────────────────────────────────
 
   val trackposicions: Vector[(Int, Int)] = (
 
@@ -67,11 +62,9 @@ class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPie
     JugadorColor.Yellow -> (9 to 13).map(c =>(c,7)).reverse.toVector
   )
 
-  // ── Construcción inicial ────────────────────────────────────────
 
   dibujarTablero(board)
 
-  // ── Layout principal ────────────────────────────────────────────
 
   private def dibujarTablero(currentBoard: InterfazTablero): Unit =
 
@@ -97,7 +90,6 @@ class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPie
           vgrow = Priority.Never
       )
 
-    // Bases
     placeAt(baseRed, 0, 0, 6, 6)
     placeAt(baseBlue, 9, 0, 6, 6)
 
@@ -126,7 +118,6 @@ class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPie
       }
     }
 
-  // ── Actualización visual ────────────────────────────────────────
 
   def updateBoard(nuevoTablero: InterfazTablero): Unit =
     baseRed.update(nuevoTablero.basePieces(JugadorColor.Red))
@@ -180,16 +171,7 @@ class BoardView(board: InterfazTablero, jugadores: Vector[InterfazJugador],onPie
       prefHeight = size
       children = Seq(red, blue, yellow, green)
 
-  // ── Helpers ─────────────────────────────────────────────────────
 
-  //ESTE DE PIECESOF YA NO LO USO HABRIA QUE BORRARLO 
-  private def piecesOf(
-    color: JugadorColor,
-    b: InterfazTablero
-  ): Vector[InterfazPieza] =
-    b.cells
-      .flatMap(_.piece)
-      .filter(_.color == color)
 
   private def placeAt( node: Node, col: Int,row: Int,colSpan: Int = 1,rowSpan: Int = 1): Unit =
 

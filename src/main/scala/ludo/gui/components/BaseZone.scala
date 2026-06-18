@@ -9,12 +9,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.text.{Text, Font, FontWeight}
 import scalafx.geometry.{Insets, Pos}
 
-// ─────────────────────────────────────────────────────────────────────────────
-// BaseZone — zona de inicio (casa) de un equipo: cuadrícula 2×2 con sus fichas
-//
-// Equivalente a BaseTeam.scala del repo original.
-// Se actualiza cuando recibe un MoverPieza con cambios en las fichas de base.
-// ─────────────────────────────────────────────────────────────────────────────
+
 class BaseZone(color: JugadorColor, pieces: Vector[InterfazPieza], onPieceClick: Int => Unit) extends GridPane:
 
   alignment = Pos.Center
@@ -43,7 +38,6 @@ class BaseZone(color: JugadorColor, pieces: Vector[InterfazPieza], onPieceClick:
     -fx-border-radius: 8;
   """
 
-  // dibuja las 4 fichas en la cuadrícula 2×2
   private def dibujarPiezas(ps: Vector[InterfazPieza]): Unit =
     children.clear()
     ps.zipWithIndex.foreach { (piece, idx) =>
@@ -55,7 +49,6 @@ class BaseZone(color: JugadorColor, pieces: Vector[InterfazPieza], onPieceClick:
       children.add(node)
     }
 
-  // fichas que ya salieron → casilla vacía gris
   private def espaciosVacios(): Node =
     new StackPane:
       prefWidth  = CellView.SIZE
@@ -88,11 +81,9 @@ class BaseZone(color: JugadorColor, pieces: Vector[InterfazPieza], onPieceClick:
     else
       espaciosVacios()
 
-  // Redibuja cuando cambia el estado del board
   def update(nuevasPiezas: Vector[InterfazPieza]): Unit =
     dibujarPiezas(nuevasPiezas)
 
-  // dibujado inicial
   dibujarPiezas(pieces)
 
   private def toHex(c: Color): String =

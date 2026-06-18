@@ -14,10 +14,7 @@ object CellView:
 
   val SIZE = 38.0
 
-  // ─────────────────────────────────────────────────────────────
-  // Convierte JugadorColor → Color JavaFX
-  // Ahora maneja null correctamente
-  // ─────────────────────────────────────────────────────────────
+
   def colorOf(pc: JugadorColor | Null): Color =
     pc match
       case null               => Color.LightGray
@@ -37,7 +34,6 @@ object CellView:
       maxHeight = SIZE
       alignment  = Pos.Center
 
-      // fondo de la casilla
       val bg = new StackPane:
         minWidth = SIZE
         prefWidth = SIZE
@@ -50,7 +46,6 @@ object CellView:
 
       children = Seq(bg) ++ pieceOverlay(cell, onPieceClick)
 
-  // ─────────────────────────────────────────────────────────────
 
   private def buildStyle(cell: InterfazCasilla): String =
     val baseColor =
